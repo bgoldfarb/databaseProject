@@ -16,90 +16,9 @@ const compare = (first, second) => {
     return first.parent_id === second.id ? 1 : -1
  }
  
- const sort_categories = (categories) => {
+const sort_categories = (categories) => {
    return categories.sort(compare)
  }
  
- const sort_categories2 = (categories) => {
-     let result = []
-     let parentIdMap = {}
-     //Creates the parentId Map
-     categories.reduce((acc, curr) => {
-         let parent_id = curr.parent_id
-         let id = curr.id
-         parentIdMap[id] = parent_id
-     })
- }
  
- var categories = [{
- 
-     name: "Accessories",   
- 
-     id: 6,
- 
-     parent_id: 2
- 
- }, {
- 
-     name: "Men",
- 
-     id: 2,
- 
-     parent_id: null
- 
- },{
- 
-     name: "Women",
- 
-     id: 10,
- 
-     parent_id: null
- 
- },
- {
- 
-     name: "Belts",
- 
-     id: 5,
- 
-     parent_id: 10
- 
- },
- {
- 
-     name: "Kids",
- 
-     id: 33,
- 
-     parent_id: null
- 
- },
- {
- 
-     name: "Shirts",
- 
-     id: 9,
- 
-     parent_id: 33
- 
- },
- {
- 
-     name: "Petites",
- 
-     id: 19,
- 
-     parent_id: null
- 
- },
- {
- 
-     name: "Sweaters",
- 
-     id: 54,
- 
-     parent_id: 19
- 
- }];
- 
- console.log(sort_categories(categories))
+ export default sort_categories
