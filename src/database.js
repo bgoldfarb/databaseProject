@@ -12,13 +12,106 @@
 //Using sorting function O(nlgn) Time O(1) Space
 //sorts entries first by their parent IDs, making sure they come first, and then their id values 
 
-const compare = (first, second) => {
-    return first.parent_id === second.id ? 1 : -1
- }
+const parentsFirst = (first, second) => {
+  return first.parent_id === second.id ? 1 : -1
+}
+
+const sortById = (first, second) => {
+    return first.id < second.id && first.parent_id !== null ? 1 : -1
+}
+
+
  
 const sort_categories = (categories) => {
-   return categories.sort(compare)
+   let parentsFirstObject =  categories.sort(parentsFirst)
+   return parentsFirstObject.sort(sortById) 
  }
- 
- 
- export default sort_categories
+
+/*
+ const categories = [
+    {
+
+    name: "Accessories",   
+
+    id: 1,
+
+    parent_id: 20
+
+}, {
+
+    name: "Men",
+
+    id: 20,
+
+    parent_id: null
+
+},
+{
+
+    name: "Belts",   
+
+    id: 3,
+
+    parent_id: 15
+
+},
+{
+
+    name: "Women",   
+
+    id: 15,
+
+    parent_id: null
+
+},
+{
+    name: "Toddlers",
+    id:7,
+    parent_id:null
+},
+{
+    name: "Shirts",
+    id: 19,
+    parent_id: 7
+}
+];
+ */
+const categories = [
+    {
+
+    name: "Accessories",   
+
+    id: 1,
+
+    parent_id: 20
+
+}, {
+
+    name: "Men",
+
+    id: 20,
+
+    parent_id: null
+
+},
+{
+
+    name: "Belts",   
+
+    id: 3,
+
+    parent_id: 15
+
+},
+{
+
+    name: "Women",   
+
+    id: 15,
+
+    parent_id: null
+
+}
+];
+ console.log(sort_categories(categories))
+ export default sort_categories 
