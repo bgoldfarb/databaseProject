@@ -3,6 +3,7 @@ import database from '../src/database'
 
 
 describe('Database Tests', () => {
+
     it('Sort Database by making sure parent_id comes before correlating id', () => {
         const categories = [{
 
@@ -24,6 +25,11 @@ describe('Database Tests', () => {
         const expected =
             [{ name: 'Men', id: 20, parent_id: null },
             { name: 'Accessories', id: 1, parent_id: 20 }]
+        expect(database(categories)).to.deep.equal(expected)
+    })
+    it('Should not break if given empty object', () => {
+        const categories = [{}];
+        const expected = [{}]
         expect(database(categories)).to.deep.equal(expected)
     })
     it('Sort Database by making sure parent_id comes before correlating id with more than one extra id', () => {
